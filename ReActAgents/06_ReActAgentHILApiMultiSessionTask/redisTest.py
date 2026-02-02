@@ -24,6 +24,7 @@ class RedisSessionManager:
             host=redis_host,
             port=redis_port,
             db=redis_db,
+            password=123456,
             decode_responses=True
         )
         # 设置默认会话过期时间（秒）
@@ -560,10 +561,10 @@ async def test_redis_session_manager():
 
 
     finally:
-        pass
+        # pass
         # # 关闭 Redis 连接
-        # await session_manager.close()
-        # print("\n=== 测试完成，Redis 连接已关闭 ===")
+        await session_manager.close()
+        print("\n=== 测试完成，Redis 连接已关闭 ===")
 
 
 # 运行测试

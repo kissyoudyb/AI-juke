@@ -11,7 +11,7 @@ class Config:
     BACKUP_COUNT = 3
 
     # PostgreSQL数据库配置参数
-    DB_URI = os.getenv("DB_URI", "postgresql://kevin:123456@localhost:5432/postgres?sslmode=disable")
+    DB_URI = os.getenv("DB_URI", "postgresql://postgres:123456@localhost:5432/postgres?sslmode=disable")
     MIN_SIZE = 5
     MAX_SIZE = 10
 
@@ -20,6 +20,7 @@ class Config:
     REDIS_PORT = 6379
     REDIS_DB = 0
     SESSION_TIMEOUT = 300
+    REDIS_PASSWORD = 123456
     TTL = 3600
 
     # openai:调用gpt模型,qwen:调用阿里通义千问大模型,oneapi:调用oneapi方案支持的模型,ollama:调用本地开源大模型

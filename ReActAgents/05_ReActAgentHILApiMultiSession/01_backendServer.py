@@ -136,6 +136,7 @@ class RedisSessionManager:
             host=redis_host,
             port=redis_port,
             db=redis_db,
+            password=Config.REDIS_PASSWORD,
             decode_responses=True
         )
         # 设置默认会话过期时间（秒）
@@ -961,9 +962,32 @@ async def write_long_term(request: LongMemRequest):
 
 
 
+# 定义异步启动函数
+async def start_server():
+    # 配置 uvicorn 服务器
+    config = uvicorn.Config(
+        app=app,
+        host=Config.HOST,
+        port=Config.PORT,
+        reload=False  # 调试模式（reload=True）可能干扰事件循环，建议先关闭，稳定后再开启
+    )
+    server = uvicorn.Server(config)
+    # 异步运行服务器
+    await server.serve()
+
+
 # 启动服务器
 if __name__ == "__main__":
+    # 第一步：配置 Windows 兼容的事件循环
     if sys.platform == "win32":
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-    uvicorn.run(app, host=Config.HOST, port=Config.PORT)
+    # 第二步：手动获取事件循环并运行异步启动函数
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    try:
+        # 运行服务器直到停止
+        loop.run_until_complete(start_server())
+    finally:
+        # 关闭事件循环，释放资源
+        loop.close()

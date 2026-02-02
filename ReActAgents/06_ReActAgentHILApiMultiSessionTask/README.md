@@ -89,11 +89,13 @@ pip install fastapi==0.115.12
 pip install redis==6.2.0
 pip install concurrent-log-handler==0.9.28
 pip install celery==5.5.3
+pip install langchain-mcp-adapters
+pip install langchain-deepseek
 ```
 
 > [!CAUTION]
 >
-> 建议先使用要求的对应版本进行本项目测试，避免因版本升级造成的代码不兼容。测试通过后，可进行升级测试。
+> 上面的环境是错误的，跑步起来，我开始测试。
 
 
 

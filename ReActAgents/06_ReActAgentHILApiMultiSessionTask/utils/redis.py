@@ -43,6 +43,7 @@ class RedisSessionManager:
             host=redis_host,
             port=redis_port,
             db=redis_db,
+            password=123456,
             decode_responses=True
         )
         # 设置默认会话过期时间（秒）
