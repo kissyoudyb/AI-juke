@@ -5,6 +5,9 @@
   "ruozhiba": {
     "file_name": "ruozhiba_alpaca.json"
   },
+  "medical": {
+    "file_name": "chinese-medical-dialogue-train.json"
+  },
   "alpaca_en_demo": {
     "file_name": "alpaca_en_demo.json"
   },
@@ -743,4 +746,3 @@
     "folder": "python"
   }
 }
-
