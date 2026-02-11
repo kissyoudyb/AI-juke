@@ -1,0 +1,2 @@
+#GGUF文件路径
+FROM /root/llama.cpp/Qwen2.5-1.5B-Instruct-gguf.gguf
